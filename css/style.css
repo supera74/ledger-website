@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+
+* {
+    /* we add this so padding doesn't take the whole width */
+    box-sizing: border-box;
+    /* we reset padding and marging so we can control it ourselves */
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: #fff;
+    /* color of the text */
+    color: #333; 
+    line-height: 1.6;
+}
+
+ul {
+    /* no bullet points */
+    list-style: none;
+}
+
+/* Links */
+a {
+    color: #333;
+    /* no underline */
+    text-decoration: none;
+}
+h1, h2 {
+    font-weight: 300;
+    /* we downsize the line height so if the text go to mulitple lines the words don't drift to far from eachother */
+    line-height: 1.2;
+
+}
+
+p {
+    /* top and bottom since we resetted to zero */
+    margin: 10px 0
+}
+
+/* images */
+img {
+/* we want images to take 100% of their containers */
+width: 100%;
+
+}
+
+/* Navbar */
+.navbar {
+    /* will be Flexbox */
+    display: flex;
+    /* since it's a row, we want to align everything */
+    /* since the align items it's a cross */
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    color: #fff;
+    opacity: 0.8;
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    top: 0px;
+    padding: 0 30px;
+    transition: 0.5s;
+
+}
+
+.navbar.top {
+    background: transparent;
+}
+.navbar a{
+    color: #fff;
+    /* to make some distance between the text */
+    /* top-bottom + left-right */
+    padding: 10px 20px;
+
+    /* 5px on left-right */
+    margin: 0 5px ;
+
+}
+
+.navbar ul {
+    /* we add this so the ul's align in a row */
+    display: flex;
+}
+
+.navbar a:hover {
+    border-bottom: #28a745 2px solid ;
+}
+.navbar .logo {
+    /* make logo more bold...from 300 to 400px */
+    font-weight: 400px;
+
+}
+
+
+/* header  we gonna make an overlay so we get a darker effect*/
+
+.hero {
+    background: url('../images/home/showcase.jpg') no-repeat center;
+    height: 100vh ;
+    position: relative;
+    color: #fff;
+}
+
+
+/* we gonna center the text with flexbox */
+
+.hero .content {
+    display: flex;
+    /* we don't want the text to be aligned horizontally, so let's change the direction */
+    /* let's do vertical   column column :)  */
+    flex-direction: column;
+    /* so we set the "The Sky Is The Limit" to the center  since it's column it aligns over the cross axis*/
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* but it's not in the middle sinc the parent .hero is set to height 100vh
+    we need to set this to height:100 so it get's to the middle  */
+    height: 100%;
+    padding: 0 20px;
+}
+
+.hero .content h1 {
+    font-size: 55px;
+}
+
+.hero .content p {
+    font-size: 23px;
+    max-width: 600px;
+    margin: 20px 0 30px;
+}
+
+/* Here we're going to create overlay by using sudo selector before */
+
+.hero::before {
+    content: '';
+    /* if parent is relative the child has to be absolute */
+    position: absolute;
+    /* we gonna put overlay, color over everything */
+    /* that's why we have position relative here within the hero since parent has relative */
+
+    /* placement */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* the following background will span over everything */
+    background: rgba(0,0,0,0.5);
+
+}
+
+/* this to make text "The Sky Is The Limit
+" in fron instead back */
+.hero * {
+    z-index: 10;
+}
+
+.hero.blog {
+    background-image: url('../images/home/blog.jpg') no-repeat center center/cover;
+    height: 30vh;
+}
+
+/* Icons */
+
+.icons {
+    padding: 30px;
+}
+
+.icons h3 {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.icons i {
+    background-color: #28a745;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 50%;
+    margin-bottom: 15px;
+
+}
+
+.cases img:hover {
+    opacity: 0.7;
+}
+
+.team img {
+    border-radius: 50%;
+}
+
+/* Callback form */
+.callback-form {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.callback-form label {
+    display: block;
+    margin-bottom: 5px;
+
+}
+
+.callback-form .form-control {
+    margin-bottom: 15px;
+}
+
+.callback-form input {
+    width: 100%;
+    padding: 4px;
+    height: 40px;
+    border: #f5f5f5 1px solid;
+}
+
+.callback-form input:focus {
+    outline-color: #333;
+}
+
+.callback-form .btn {
+    padding: 12px 0;
+    margin-top: 20px;
+}
+
+/* Footer */
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 90px;
+}
+
+
+.footer a {
+    color: #fff;
+    padding: 10px;
+}
+
+.footer a:hover {
+    color: #28a745;
+}
+
+.footer .social > * {
+    padding: 20px;
+    margin-right: 30px;
+}
+
+/* Mobile Devices */
+
+/* Mobile */
+@media(max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: 120px;
+        padding: 20px;
+    }
+
+    .navbar a {
+        padding: 10px 10px;
+        margin: 0 3px;
+    }
+
+    .flex-items {
+        flex-direction: column;
+    }
+
+    .flex-columns .column, .flex-grid .column {
+        flex: 100%;
+        max-width: 100%;
+    }
+
+    .team img {
+        width: 70%;
+    }
+}
+
